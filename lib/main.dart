@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:boilerplate/di/components/injection.dart';
 import 'package:boilerplate/ui/my_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -9,7 +10,8 @@ import 'di/components/service_locator.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await setPreferredOrientations();
-  await setupLocator();
+  await configureInjection(Env.dev);
+  // await setupLocator();
   return runZonedGuarded(() async {
     runApp(MyApp());
   }, (error, stack) {
